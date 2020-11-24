@@ -20,8 +20,23 @@ module.exports = {
       'database error on registration function', err
     }
   },
-  login: (req, res) => {
-
+  login: async (req, res) => {
+    const db = req.app.get('db');
+    const {email, password} = req.body;
+    const [foundUser] = await db.find_email(email);
+    if(foundUser){
+      const comparePassword = foundUser.password
+      const authenticated = bcrypt.compareSync(password, comparePassword)
+      if(authenticated){
+        delete foundUser.password
+        req.session.user = foundUser
+        res.status(200).send(req.session.foundUser)
+      } else{
+        res.status(401).send('email or password is incorrect')
+      }
+    } else{
+      res.status(401).send('enail or password incorrect')
+    }
   },
   logout: (req, res) => {
 
