@@ -2,6 +2,7 @@
 const bcrypt = require('bcrypt');
 
 module.exports = {
+
   register: async (req, res) => {
     const db = req.app.get('db');
     const {firstName, lastName, email, password} = req.body
@@ -20,6 +21,7 @@ module.exports = {
       'database error on registration function', err
     }
   },
+
   login: async (req, res) => {
     const db = req.app.get('db');
     const {email, password} = req.body;
@@ -38,8 +40,20 @@ module.exports = {
       res.status(401).send('enail or password incorrect')
     }
   },
-  logout: (req, res) => {
 
+  editUser: async (req, res) => {
+    const db = req.app.get('db')
+    const {img} = req.body
+    const {user_id} = req.session.user
+
+    const updatedUser = await db.edit_user([user_id, username, img])
+    req.session.user = updatedUser[0]
+    res.status(200).send(req.session.user)
+  },
+  logout: (req, res) => {
+    const db = req.app.get('db')
+    req.session.destroy
+    res.sendStatus(200)
   }
 
 }
