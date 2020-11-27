@@ -15,3 +15,9 @@ CREATE TABLE cards(
   category VARCHAR(50) NOT NULL,
 )
 
+CREATE TABLE interests (
+  id SERIAL PRIMARY KEY,
+  interest VARCHAR(50)
+  
+)
+
