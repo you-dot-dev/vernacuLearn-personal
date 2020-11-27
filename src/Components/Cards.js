@@ -11,8 +11,8 @@ const Cards = () => {
       <div class="grocery-list-container">
     <div class="red-line"></div>
     <div class="input-container">
-      <input type="text" id='item' />
-      <button id='btn'>Add Item</button>
+       {/* <input type="text" id='item' />  */}
+      <button id='btn'>Pencil icon goes here</button>
     </div>
     <ul id='grocery-list'></ul>
     </div>
