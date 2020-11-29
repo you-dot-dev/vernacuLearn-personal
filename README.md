@@ -1,8 +1,8 @@
-# Getting Started with Create React App
+# 1. Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## 1.1 — Available Scripts
 
 In the project directory, you can run:
 
@@ -39,7 +39,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## 1.2 — Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
@@ -68,3 +68,65 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+# 2. Infrastructure
+
+## 2.1 — Initial infra Runbook
+
+This section contains steps to get vernacuLearn infrastructure set up from scratch in a new or existing AWS account.
+
+### 2.1.1 – Create an AWS account or log into an existing one
+We'll be creating resources in an AWS account, so a user with VPC/EC2/S3 privileges will be required.
+[Create an account](https://portal.aws.amazon.com/billing/signup#/start) or 
+[Sign in](https://console.aws.amazon.com/) to the console using your existing credentials.
+
+### 2.1.2 – Create VPC
+Once signed into the AWS console, select VPC from the "Services" menu
+
+### 2.1.3 – Create a subnet
+Our datacenter resources we'll be 
+
+### 2.1.4 – Create an Internet Gateway
+Resources in need of internet
+
+### 2.1.5 – Ensure the subnet can reach the gateway
+
+### 2.1.6 – Create an t2.micro on-demand Instance (virtual machine)
+
+### 2.1.7 – Ensure SSH security group allow ONLY your IP
+
+### 2.1.8 – SSH into the ec2 instance
+
+### 2.1.9 – Install NGINX via `apt` package manager
+
+### 2.1.10 – Install CertBot if you are setting up HTTPS for a domain
+
+### 2.1.11 – Clone application repository onto EC2 instance
+
+### 2.1.12 - Fill out .env file on EC2 instance
+
+### 2.1.13 - Create user `node` and only run 
+
+
+## 2.2 Maintenance
+
+
+# 3. Development Roadmap
+
+## Define the `card` schema
+The main object in vernacuLearn is a `card`, representing a flashcard in a deck. Each card should have a unique ID, a name, definition, categories, etc. While the schema may change over time, try to have some universal info in place.
+
+Examples used across many schemas:
+
+- `id`
+- `date_created`
+- `date_modified`
+- `owner_id`
+- `group_id`
+- `status` `ENUM('draft', 'published', 'private', 'disabled')`
+
+## Create initial CRUD API for `card` records
+
+
