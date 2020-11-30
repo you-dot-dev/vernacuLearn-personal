@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 module.exports = {
 
   register: async (req, res) => {
+    console.log('registration wtf')
     const db = req.app.get('db');
     const {firstName, lastName, email, password} = req.body
     try{
@@ -16,6 +17,7 @@ module.exports = {
         const [newUser] = await db.register_user([email, hash])
         req.session.user = newUser;
         res.status(200).send(req.session.user)
+        console.log('hello from auth')
       }
     } catch(err){
       'database error on registration function', err
