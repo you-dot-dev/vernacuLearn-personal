@@ -73,7 +73,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # 2. Infrastructure
 
-## 2.1 — Initial infra Runbook
+## 2.1 — Initial Infra Runbook
 
 This section contains steps to get vernacuLearn infrastructure set up from scratch in a new or existing AWS account.
 
@@ -83,7 +83,14 @@ We'll be creating resources in an AWS account, so a user with VPC/EC2/S3 privile
 [Sign in](https://console.aws.amazon.com/) to the console using your existing credentials.
 
 ### 2.1.2 – Create VPC
-Once signed into the AWS console, select VPC from the "Services" menu
+Once signed into the AWS console, select VPC from the "Services" menu. Take note of the default region in the upper-right menu as this runbook is for a single region. Choose a region you feel will best suit your users.
+
+1. Under the left-side navigation, click "Your VPCs".
+
+2. Click "Create VPC" and 
+
+
+
 
 ### 2.1.3 – Create a subnet
 Our datacenter resources we'll be 
