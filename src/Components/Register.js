@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {useState} from 'react';
 
-const Auth = () => {
+const Register = () => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -60,4 +60,4 @@ const Auth = () => {
   )
 }
 
-export default Auth;
+export default Register;

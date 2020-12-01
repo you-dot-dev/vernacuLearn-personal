@@ -3,9 +3,9 @@ CREATE TYPE parts_of_speech as ENUM ('noun', 'verb', 'adjective', 'adverb', 'pro
 CREATE TABLE cards (
     id SERIAL PRIMARY KEY,
     word_or_phrase VARCHAR(1000) NOT NULL,
-    definition VARCHAR(500) NOT NULL,
+    definition VARCHAR(1000) NOT NULL,
     difficulty difficulty_list,
     category VARCHAR(50) NOT NULL,
-    parts_of_speech parts_of_speech
+    part_of_speech parts_of_speech
 );
 
