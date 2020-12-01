@@ -1,4 +1,5 @@
-import {useState, useEffect} from 'react';
+import axios from 'axios';
+import {useState} from 'react';
 
 const Auth = () => {
   const [firstName, setFirstName] = useState('')
@@ -7,12 +8,23 @@ const Auth = () => {
   const [password, setPassword] = useState('')
 
 
-  handleSubmit(){
-    
+ function handleSubmit(e){
+   e.preventDefault();
+   console.log("wtf???")
+   axios.post('http://localhost:1234/auth/register', {
+     firstName,
+     lastName,
+     email,
+     password
+    })
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err))
   }
+  console.log("getting data", firstName, lastName, email, password)
   
   return (
-    <div>
+    <form>
+     
       <h1>Register Here.</h1>
       <input 
       type="text"
@@ -33,16 +45,18 @@ const Auth = () => {
       onChange={(e) => setEmail(e.target.value)}
       />
       <input 
-      type="text"
+      type="password"
       name="password"
       placeholder="password"
       onChange={(e) => setPassword(e.target.value)}
       />
       
 
-      <button onSubmit={handleSubmit}>Click me </button>
+      <button
+      type="submit"
+       onClick={(e) => {handleSubmit(e)}}>Click me </button>
     
-    </div>
+    </form>
   )
 }
 

@@ -35,6 +35,7 @@ module.exports = {
   },
 
   login: async (req, res) => {
+    console.log("req.bodywtf", req.body)
     const db = req.app.get('db');
     const {email, password} = req.body;
     const [foundUser] = await db.find_email(email);

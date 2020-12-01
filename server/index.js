@@ -6,7 +6,7 @@ const session = require('express-session');
 const cardCtrl = require('./cardController');
 // import interestCtrl from './interestController';
 const authCtrl = require('./authController');
-
+const cors = require('cors');
 
 const app = express();
 
@@ -14,6 +14,7 @@ const app = express();
 
 //middleware
 app.use(express.json());
+app.use(cors());
 app.use(session({
   resave:false,
   saveUninitialized: true,
