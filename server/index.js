@@ -23,7 +23,6 @@ app.use(session({
   }, 
 })
 );
-console.log("app", app)
 
 massive({
   connectionString: CONNECTION_STRING,

@@ -6,21 +6,10 @@ const Auth = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  useEffect(() => {
-    console.log("Using the effect!");
 
-    let something = "this is a string?";
-    return () => {
-      console.log("Done with the effect wtf!");
-      console.log("something???", something)
-    }
-    //e.target.name = e.target.value
-  })
-  /*
-  const setFirstName = (e) => {
-    e.target.name = e.target.value
+  handleSubmit(){
+    
   }
-  */
   
   return (
     <div>
@@ -29,29 +18,30 @@ const Auth = () => {
       type="text"
       name="firstName"
       placeholder="first name here"
-      onChange={setFirstName}
+      onChange={(e) => setFirstName(e.target.value)}
       />
       <input 
       type="text"
       name="lastName"
       placeholder="last name here"
-      
+      onChange={(e) => setLastName(e.target.value)}
       />
       <input 
       type="text"
       name="email"
       placeholder="email"
-      
+      onChange={(e) => setEmail(e.target.value)}
       />
       <input 
       type="text"
       name="password"
       placeholder="password"
-      
+      onChange={(e) => setPassword(e.target.value)}
       />
       
 
-      <button>Click me </button>
+      <button onSubmit={handleSubmit}>Click me </button>
+    
     </div>
   )
 }
