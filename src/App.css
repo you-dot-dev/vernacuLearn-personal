@@ -3,6 +3,7 @@
   margin:0;
   padding:0;
   text-decoration: none;
+  list-style: none;
 }
 
 /* this is all for the registration page */
@@ -82,5 +83,53 @@ footer a {
 
 /* this is for the dashboard  */
 .welcome {
+  text-align: center;
+}
+
+
+/* this is for the cards */
+
+#grocery-list-title, #grocery-status{
+  text-align:center
+}
+
+.grocery-list-container{
+  width: 440px;
+  margin: 0 auto;
+  border: 1px solid #333;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 2px 3px 0px #eee;
+  background: #fff;
+}
+.red-line {
+  height:100%;
+  border: 1px solid rgba(255, 0, 0, 0.788);
+  position: absolute;
+  left:80px;
+}
+
+.grocery-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+li{
+  padding: 3px 3px 3px 95px;
+  border-top: 1px solid rgba(89,89,211,0.459);
+  color:#333;
+}
+li:last-child{
+  margin-bottom: 0;
+}
+
+.pencil-btn{
+  position: absolute;
+  left:300px;
+  bottom: 40px;
+
+}
+.input-container{
+  color:#333;
   text-align: center;
 }

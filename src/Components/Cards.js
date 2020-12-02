@@ -11,10 +11,13 @@ const Cards = () => {
       <div class="grocery-list-container">
     <div class="red-line"></div>
     <div class="input-container">
-       {/* <input type="text" id='item' />  */}
-      <button id='btn'>Pencil icon goes here</button>
+       <h4>word</h4>
+      <button className='pencil-btn'>Pencil icon goes here</button>
     </div>
-    <ul id='grocery-list'></ul>
+    <ul id='grocery-list'>
+      <li>hello</li>
+      <li>hello</li>
+    </ul>
     </div>
     </div>
   )

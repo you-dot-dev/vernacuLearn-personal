@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {useState} from 'react';
+import {Link} from 'react-router-dom';
 
 const Register = (props) => {
   const [firstName, setFirstName] = useState('')
@@ -74,7 +75,7 @@ const Register = (props) => {
        
      
     <footer>
-      <p className="login-btn">already have an account? <a href="#">log in here</a></p>
+      <p className="login-btn">already have an account? <Link to="/Login">log in here</Link></p>
        </footer>
     </div> 
   

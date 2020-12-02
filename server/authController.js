@@ -66,6 +66,18 @@ module.exports = {
     req.session.user = updatedUser[0]
     res.status(200).send(req.session.user)
   },
+
+  userInfo: async (req, res) => {
+    console.log("userInfo called");
+    console.log("req.session", req.session);
+    if (req.session && req.session.user) {
+      console.log("req.session", req.session);
+      res.json(req.session.user);
+    } else {
+      res.json({});
+    }
+  },
+
   logout: (req, res) => {
     const db = req.app.get('db')
     req.session.destroy

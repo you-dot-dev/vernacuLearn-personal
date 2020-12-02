@@ -14,7 +14,11 @@ const app = express();
 
 //middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:3000",
+  methods: ["GET", "POST"],
+  credentials: true
+}));
 app.use(session({
   resave:false,
   saveUninitialized: true,
@@ -39,6 +43,7 @@ massive({
 //endpoints
 app.post('/auth/login', authCtrl.login)
 app.post('/auth/register', authCtrl.register)
+app.get('/auth/userInfo', authCtrl.userInfo)
 app.put('/auth/editUser', authCtrl.editUser)
 app.post('/auth/logout', authCtrl.logout)
 app.get('/api/cards', cardCtrl.getAllCards)
