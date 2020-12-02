@@ -2,7 +2,11 @@
 const Dashboard = (props) => {
 
     return(
-      <div>THis is the dashbaord</div>
+      <div>
+        <p>Welcome, {props.currentUser.firstname}</p>
+
+      </div>
+      
     )
 }
 

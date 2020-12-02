@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {useState} from 'react';
 
-const Register = () => {
+const Register = (props) => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -17,7 +17,11 @@ const Register = () => {
      email,
      password
     })
-    .then(res => console.log(res.data))
+    .then(res => {
+      console.log(res.data)
+      props.setCurrentUser(res.data[0]);
+      props.setLoggedIn(true);
+    })
     .catch(err => console.log(err))
   }
   console.log("getting data", firstName, lastName, email, password)
