@@ -8,6 +8,7 @@ import Dashboard from './Components/Dashboard'
 import {Route, Switch, Redirect} from 'react-router-dom';
 import {Component} from 'react';
 import axios from 'axios';
+import Logout from './Components/Logout';
 
 
 class App extends Component{
@@ -89,6 +90,11 @@ class App extends Component{
             <Dashboard
             currentUser={this.state.currentUser}
             isLoggedIn={this.state.isLoggedIn}/>
+          </Route>
+          <Route path='/Logout'>
+            <Logout
+            setCurrentUser={this.setCurrentUser}
+            setLoggedIn={this.setLoggedIn}/>
           </Route>
         </Switch>
         

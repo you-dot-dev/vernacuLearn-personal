@@ -24,6 +24,11 @@ const Profile = (props) => {
       <input type="file"
        id="avatar" name="avatar"
        accept="image/png, image/jpeg"></input>
+       <h3>Interests: </h3>
+       <li>one</li>
+       <li>two</li>
+       <li>three</li>
+       <li>four</li>
     </div>
     </div>
   )
