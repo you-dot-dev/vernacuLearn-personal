@@ -78,7 +78,9 @@ class App extends Component{
             />
           </Route>
           <Route path='/Profile'>
-            <Profile/>
+            <Profile
+            currentUser={this.state.currentUser}
+            isLoggedIn={this.state.isLoggedIn}/>
           </Route>
           <Route path='/Cards'>
             <Cards/>

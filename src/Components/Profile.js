@@ -1,14 +1,32 @@
-import {useState} from 'react';
+import { useEffect } from 'react'
+import { withRouter } from 'react-router-dom';
 
-const Profile = () => {
+const Profile = (props) => {
+
+  console.log("props from profile", props)
 
 
+  useEffect(() => {
+    if(!props.isLoggedIn){
+      props.history.push('/')
+    }
 
+  }, [props.isLoggedIn])
+  
+
+    
   return (
-    <div>
-      <h1>hello from Profile</h1>
+    <div className="container">
+      <div className="form-wrap">
+      <h1>{props.currentUser.firstname} {props.currentUser.lastname}</h1>
+      <h3>{props.currentUser.email}</h3>
+      <label for="avatar">Choose a profile picture:</label>
+      <input type="file"
+       id="avatar" name="avatar"
+       accept="image/png, image/jpeg"></input>
+    </div>
     </div>
   )
 }
 
-export default Profile;
+export default withRouter(Profile);
