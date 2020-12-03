@@ -3,20 +3,21 @@ const initialState = {
   cards: []
 }
 
+const UPDATE_CARDS = 'UPDATE_CARDS'
 
-export default function reducer(state, action) {
+export default function cardReducer(state, action) {
   if (typeof state === 'undefined') {
     state = {
       cards: []
     } 
   }
-
-  switch(action.type) {
-    case 'UPDATE_CARDS':
-      console.log("The payload:", action.payload)
+  const {type, payload} = action;
+  switch(type) {
+    case UPDATE_CARDS:
+      console.log("The payload:", payload)
       return {
         ...state,
-        cards: action.payload
+        cards: payload
       }
     default:
       return state;
