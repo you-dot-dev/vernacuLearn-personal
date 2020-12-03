@@ -85,7 +85,8 @@ class App extends Component{
           </Route>
           <Route path='/Dashboard'>
             <Dashboard
-            currentUser={this.state.currentUser}/>
+            currentUser={this.state.currentUser}
+            isLoggedIn={this.state.isLoggedIn}/>
           </Route>
         </Switch>
         
