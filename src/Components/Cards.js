@@ -1,4 +1,11 @@
 import {useState} from 'react';
+import { connect } from 'react-redux';
+
+const mapStateToProps = (state) => {
+  return {
+    cards: state.cards
+  }
+}
 
 const Cards = () => {
 
@@ -23,4 +30,4 @@ const Cards = () => {
   )
 }
 
-export default Cards;
+export default connect(mapStateToProps)(Cards);

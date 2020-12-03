@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {useState} from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link} from 'react-router-dom';
 axios.defaults.withCredentials = true;
 
 const Login = (props) => {
@@ -50,6 +50,9 @@ const Login = (props) => {
         onClick={(e) => onSubmit(e)}
         
         >Log in here</button>
+        <footer>
+      <p className="login-btn">don't have an account <Link to="/">sign up here</Link></p>
+       </footer>
 
     </form>
     </div>

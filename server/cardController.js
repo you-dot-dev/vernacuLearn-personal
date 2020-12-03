@@ -18,7 +18,8 @@ module.exports = {
   },
   getAllCards: async(req, res) => {
     const db = req.app.get('db');
-
+    const getCards = await db.get_all_cards()
+    res.status(200).send(getCards)
   },
 
 }
