@@ -4,8 +4,8 @@ module.exports = {
 
     const db = req.app.get('db');
     console.log(req.body)
-    const {word_or_phrase, definition, difficulty, category, part_of_speech} = req.body;
-    const addCards = await db.add_card([word_or_phrase, definition, difficulty, category, part_of_speech])
+    const {word_or_phrase, definition, difficulty, category, part_of_speech, owner_id} = req.body;
+    const addCards = await db.add_card([word_or_phrase, definition, difficulty, category, part_of_speech, owner_id])
     res.status(200).send(addCards)
     
 
