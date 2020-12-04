@@ -10,6 +10,8 @@ export default (
     <Route path='/Dashboard' component={Dashboard}/>
     <Route path='/Profile' component={Profile}/>
     <Route path='/' component={Auth}/>
+    
+    
 
   </Switch>
 )

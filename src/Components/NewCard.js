@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 
-const NewCard = () => {
+const NewCard = (props) => {
   const [wordOrPhrase, setWordOrPhrase] = useState('')
   const [definition, setDefinition] = useState('')
   const [difficulty, setDifficulty] = useState('')
@@ -9,8 +9,11 @@ const NewCard = () => {
   const [category, setCategory] = useState('');
 
 
-  function handleSubmit(){
-    axios.post('http://localhost:1234/api/cards')
+  function handleSubmit(e){
+    console.log("handleSubmit has e:",e)
+    e.preventDefault();
+
+    axios.post('http://localhost:1234/api/cards', {word_or_phrase: wordOrPhrase, definition, category, part_of_speech: partOfSpeech, difficulty, owner_id: props.currentUser.id})
     .then(res => 
       console.log(res.data))
   }
@@ -47,7 +50,11 @@ const NewCard = () => {
 
         </ul>
       </div>
-        <button onSubmit={handleSubmit}>submit new card</button>
+        <button onClick={(e)=>{
+          console.log("onClick has e:", e);
+          e.preventDefault();
+          handleSubmit(e);
+          }}>submit new card</button>
         </>
   )}
 

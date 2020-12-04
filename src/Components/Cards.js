@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, Fragment} from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
@@ -9,6 +9,7 @@ const mapStateToProps = (state) => {
 }
 
 const Cards = (props) => {
+  const [cardFilter, setCardFilter] = useState('');
 
   useEffect(() => {
 
@@ -27,8 +28,22 @@ const Cards = (props) => {
     };
   }, []);
 
-  const cardList = props.cards.map( (card) => {
+  
+
+
+
+  const cardList = props.cards
+    .filter( (card) => {
+      if(cardFilter.length < 2){
+        return true
+      } else {
+        return card.category.includes(cardFilter)
+      }
+    })
+    .map( (card) => {
     return (
+      <Fragment>
+      
       <div className="grocery-list-container">
         <div className="red-line"></div>
         <div className="input-container">
@@ -42,10 +57,16 @@ const Cards = (props) => {
           <li>Category: {card.category}</li>
         </ul>
       </div>
+      </Fragment>
     );
   })
   return (
-    <div>
+    <div >
+      <div style={{textAlign:"center"}}>
+        <h2>Filter through by category:</h2>
+        <input type="text" 
+        onChange={(e) => {setCardFilter(e.target.value)}}/>
+      </div>
       <h1 id='grocery-list-title'></h1>
       <h3 id='grocery-status'></h3>
       {cardList}
