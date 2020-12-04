@@ -25,10 +25,10 @@ class App extends Component{
         lastname: '',
         email: '',
       },
-      toggleSwitch: false
-
-      
+      menuOpen: false
     }
+
+    this.toggleMenu = this.toggleMenu.bind(this);
     this.setCurrentUser = this.setCurrentUser.bind(this);
     this.setLoggedIn = this.setLoggedIn.bind(this);
   }
@@ -61,11 +61,21 @@ class App extends Component{
       isLoggedIn: userIsLoggedIn
     })
   }
+
+  toggleMenu() {
+    this.setState({menuOpen: !this.state.menuOpen});
+  }
+
   
   render(){
     return(
       <div className="App">
-
+        <svg viewBox="0 0 100 80" width="40" height="40" onClick={this.toggleMenu}>
+          <rect width="100" height="20"></rect>
+          <rect y="30" width="100" height="20"></rect>
+          <rect y="60" width="100" height="20"></rect>
+        </svg>
+        <Nav isLoggedIn={this.state.isLoggedIn} menuOpen={this.state.menuOpen} toggleMenu={this.toggleMenu} />
             {/* {this.state.loggedIn ? (
               <div>
                 <Nav className="nav-component"/>

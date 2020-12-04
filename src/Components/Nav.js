@@ -1,11 +1,18 @@
+import { Link } from 'react-router-dom';
 
-const Nav = () => {
+const Nav = (props) => {
   return(
-    <svg viewBox="0 0 100 80" width="40" height="40">
-    <rect width="100" height="20"></rect>
-    <rect y="30" width="100" height="20"></rect>
-    <rect y="60" width="100" height="20"></rect>
-</svg>
+    <nav className={props.menuOpen ? "nav nav-open": "nav"} id="navigation">
+      <button onClick={props.toggleMenu}>Close</button>
+      <ul>
+        <li><Link to="/Dashboard">Home</Link></li>
+        <li><Link to="/Cards">Cards</Link></li>
+        <li><Link to="/Interests">Interests</Link></li>
+        <li><Link to="/Profile">Profile</Link></li>
+        <li><Link to="/Logout">Logout</Link></li>
+        <li><Link to="/NewCard">Add New Card</Link></li>
+      </ul>
+    </nav>
   )
 }
 

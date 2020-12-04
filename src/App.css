@@ -26,7 +26,7 @@ h1{
 
 .form-wrap{
   background:#fff;
-  padding:15px 25px;
+  padding:15px;
   color:#333;
 }
 
@@ -138,7 +138,7 @@ li:last-child{
 /* this is for the navigation */
 nav.nav {
   height: 100%; /* 100% Full-height */
-  width: 20%; /* 0 width - change this with JavaScript */
+  width: 0; /* 0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
   z-index: 1; /* Stay on top */
   top: 0;
@@ -147,6 +147,10 @@ nav.nav {
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the*/
+}
+nav.nav.nav-open {
+  width: 25%;
+  transition: 0.5s;
 }
 .nav-component{
   z-index: 10;
