@@ -15,9 +15,19 @@ CREATE TABLE cards(
   category VARCHAR(50) NOT NULL,
 )
 
-CREATE TABLE interests (
-  id SERIAL PRIMARY KEY,
-  interest VARCHAR(50)
-  card_id REFERENCES cards(id)
-)
+-- CREATE TABLE interests (
+--   id SERIAL PRIMARY KEY,
+--   interest VARCHAR(50)
+--   card_id REFERENCES cards(id)
+-- )
 
+
+CREATE TABLE personal_cards (
+  id SERIAL PRIMARY KEY,
+  word_or_phrase VARCHAR(100) NOT NULL,
+  definition VARCHAR(1000) NOT NULL,
+  difficulty difficulty_list,
+  category VARCHAR(50) NOT NULL,
+  part_of_speech parts_of_speech,
+  owner_id INT REFERENCES users(id)
+);

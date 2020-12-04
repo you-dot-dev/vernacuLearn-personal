@@ -70,50 +70,19 @@ class App extends Component{
   render(){
     return(
       <div className="App">
+        
+
+        {this.state.isLoggedIn ? 
+        <>
         <svg viewBox="0 0 100 80" width="40" height="40" onClick={this.toggleMenu}>
           <rect width="100" height="20"></rect>
           <rect y="30" width="100" height="20"></rect>
           <rect y="60" width="100" height="20"></rect>
         </svg>
         <Nav isLoggedIn={this.state.isLoggedIn} menuOpen={this.state.menuOpen} toggleMenu={this.toggleMenu} />
-            {/* {this.state.loggedIn ? (
-              <div>
-                <Nav className="nav-component"/>
-                <nav className="nav">
-                <button>Test</button>
-                    <ul>
-                        <li><Link to="/Dashboard">Home</Link></li>
-                        <li><Link to="/Cards">Cards</Link></li>
-                        <li><Link to="/Interests">Interests</Link></li>
-                        <li><Link to="/Profile">Profile</Link></li>
-                        <li><Link to="/Logout">Logout</Link></li>
-                        <li><Link to="/NewCard">Add New Card</Link></li>
-                    </ul>
-                </nav>
-              </div>
-            ) : null } */}
-
-        {/* {this.state.isLoggedIn ? (
-          style={{width: this.state.toggleSwitch ? "0" : "20%"}}
-      
-      onClick={() => this.setState({toggleSwitch: !this.state.toggleSwitch})}
-          <div>
-            <button onClick={() => this.setState({toggleSwitch: !this.state.toggleSwitch})}>
-              <Nav/> </button>
-          <nav style={{width: this.state.toggleSwitch ? "0" : "20%"}} className="nav">
-        <ul>
-            <li><Link to="/Dashboard">Home</Link></li>
-            <li><Link to="/Cards">Cards</Link></li>
-            <li><Link to="/Interests">Interests</Link></li>
-            <li><Link to="/Profile">Profile</Link></li>
-            <li><Link to="/Logout">Logout</Link></li>
-            <li><Link to="/NewCard">Add New Card</Link></li>
-        </ul>
-       </nav> 
-        </div>) : null} */}
-    
-     
-        
+         </> 
+          
+        : null}
     
         <Switch> 
           <Route exact path='/' >

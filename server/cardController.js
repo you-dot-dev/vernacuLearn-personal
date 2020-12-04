@@ -1,8 +1,12 @@
 
 module.exports = {
   addCard: async(req,res) => {
+
     const db = req.app.get('db');
-    const addCards = await db.add_card()
+    console.log(req.body)
+    const {word_or_phrase, definition, difficulty, category, part_of_speech} = req.body;
+    const addCards = await db.add_card([word_or_phrase, definition, difficulty, category, part_of_speech])
+    res.status(200).send(addCards)
     
 
   },
