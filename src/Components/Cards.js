@@ -14,8 +14,7 @@ const Cards = (props) => {
 
     axios.get("http://localhost:1234/api/cards")
       .then( (res) => {
-        console.log("res.data:", res.data);
-        console.log("props3:", props);
+       
         props.dispatch({
           type: "UPDATE_CARDS",
           payload: res.data

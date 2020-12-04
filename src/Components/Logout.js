@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 const Logout = (props) => {
 
@@ -18,7 +19,12 @@ const Logout = (props) => {
   }, [])
 
   return(
-    <h1>logging you out</h1>
+    <div className="container">
+      <div className="form-wrap">
+      <h1>Sad to see you go</h1>
+      <p className="login-btn">accidentally signed out? <Link to="/Login">log in here</Link></p>
+      </div>
+    </div>
   )
 
 }

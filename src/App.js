@@ -5,10 +5,12 @@ import Profile from './Components/Profile';
 import Cards from './Components/Cards';
 import {useState} from 'react';
 import Dashboard from './Components/Dashboard'
-import {Route, Switch, Redirect} from 'react-router-dom';
+import {Route, Switch, Redirect, Link} from 'react-router-dom';
 import {Component} from 'react';
 import axios from 'axios';
 import Logout from './Components/Logout';
+import NewCard from './Components/NewCard';
+import Nav from './Components/Nav';
 
 
 class App extends Component{
@@ -22,7 +24,8 @@ class App extends Component{
         firstname: '',
         lastname: '',
         email: '',
-      }
+      },
+      toggleSwitch: false
 
       
     }
@@ -62,6 +65,45 @@ class App extends Component{
   render(){
     return(
       <div className="App">
+
+            {/* {this.state.loggedIn ? (
+              <div>
+                <Nav className="nav-component"/>
+                <nav className="nav">
+                <button>Test</button>
+                    <ul>
+                        <li><Link to="/Dashboard">Home</Link></li>
+                        <li><Link to="/Cards">Cards</Link></li>
+                        <li><Link to="/Interests">Interests</Link></li>
+                        <li><Link to="/Profile">Profile</Link></li>
+                        <li><Link to="/Logout">Logout</Link></li>
+                        <li><Link to="/NewCard">Add New Card</Link></li>
+                    </ul>
+                </nav>
+              </div>
+            ) : null } */}
+
+        {/* {this.state.isLoggedIn ? (
+          style={{width: this.state.toggleSwitch ? "0" : "20%"}}
+      
+      onClick={() => this.setState({toggleSwitch: !this.state.toggleSwitch})}
+          <div>
+            <button onClick={() => this.setState({toggleSwitch: !this.state.toggleSwitch})}>
+              <Nav/> </button>
+          <nav style={{width: this.state.toggleSwitch ? "0" : "20%"}} className="nav">
+        <ul>
+            <li><Link to="/Dashboard">Home</Link></li>
+            <li><Link to="/Cards">Cards</Link></li>
+            <li><Link to="/Interests">Interests</Link></li>
+            <li><Link to="/Profile">Profile</Link></li>
+            <li><Link to="/Logout">Logout</Link></li>
+            <li><Link to="/NewCard">Add New Card</Link></li>
+        </ul>
+       </nav> 
+        </div>) : null} */}
+    
+     
+        
     
         <Switch> 
           <Route exact path='/' >
@@ -95,6 +137,11 @@ class App extends Component{
             <Logout
             setCurrentUser={this.setCurrentUser}
             setLoggedIn={this.setLoggedIn}/>
+          </Route>
+          <Route path="/NewCard">
+            <NewCard
+            currentUser={this.state.currentUser}
+            isLoggedIn={this.state.isLoggedIn}/>
           </Route>
         </Switch>
         

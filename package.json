@@ -2,6 +2,10 @@
   "name": "vernaculearn-personal",
   "version": "0.1.0",
   "private": true,
+  "main": "server",
+  "nodemonConfig": {
+    "ignore": "src/*"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",

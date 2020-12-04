@@ -2,6 +2,8 @@
 module.exports = {
   addCard: async(req,res) => {
     const db = req.app.get('db');
+    const addCards = await db.add_card()
+    
 
   },
   deleteCard: async (req, res) => {

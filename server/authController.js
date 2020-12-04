@@ -80,7 +80,7 @@ module.exports = {
 
   logout: (req, res) => {
     const db = req.app.get('db')
-    req.session.destroy
+    req.session.destroy()
     res.sendStatus(200)
   }
 
