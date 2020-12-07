@@ -9,17 +9,29 @@ const NewCard = (props) => {
   const [category, setCategory] = useState('');
   const [userCards, setUserCards] = useState([]);
 
-  useEffect(() => {
+  function updateCards() {
     axios.get(`http://localhost:1234/api/myCards/${props.currentUser.id}`)
     .then(res => {
       console.log('res data from new card', res.data)
       setUserCards(res.data)
     })
+  }
+
+  useEffect(() => {
+    updateCards()
   }, [props])
 
-  function handleDelete(e){
-    axios.delete('http://localhost:1234/api/cards/:id')
-    
+  
+
+  function handleDelete(cardId){
+    console.log("cardId?:", cardId);
+    axios.delete(`http://localhost:1234/api/cards/${cardId}`)
+    .then( (res) => {
+      console.log("handleDelete res:", res);
+      updateCards()
+    })
+    .catch( (err) => {console.log("handleDelete err:", err)})
+
   }
 
 
@@ -27,10 +39,7 @@ const NewCard = (props) => {
     e.preventDefault();
     axios.post('http://localhost:1234/api/cards', {word_or_phrase: wordOrPhrase, definition, category, parts_of_speech:partOfSpeech, difficulty, owner_id: props.currentUser.id})
     .then((res) => {
-      axios.get(`http://localhost:1234/api/myCards/${props.currentUser.id}`)
-      .then(res => {
-        setUserCards(res.data);
-      })
+      updateCards()
     }) 
     .catch((err) => {
       console.log('err', err)
@@ -51,7 +60,7 @@ const NewCard = (props) => {
             <li>Part Of Speech: {card.part_of_speech}</li>
             <li>Difficulty: {card.difficulty}</li>
             <li>Category: {card.category}</li>
-            <li><button onClick={handleDelete}>delete card</button></li>
+            <li><button onClick={(e)=>{console.log("card:", card);handleDelete(card.id)}}>delete card</button></li>
           </ul>
         </div>
       </Fragment>

@@ -15,8 +15,8 @@ const app = express();
 //middleware
 app.use(express.json());
 app.use(cors({
-  origin: "http://localhost:3000",
-  methods: ["GET", "POST"],
+  origin: "http://localhost:3000,",
+  methods: ["GET", "POST", "DELETE", "PUT", "HEAD"],
   credentials: true
 }));
 app.use(session({
@@ -24,7 +24,7 @@ app.use(session({
   saveUninitialized: true,
   secret: SESSION_SECRET,
   cookie: {
-    maxAge: 100 * 60 * 60 * 24 * 7,
+    maxAge: 1000 * 60 * 60 * 24 * 7,
   }, 
 })
 );
