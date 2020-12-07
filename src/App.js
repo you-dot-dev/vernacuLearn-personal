@@ -3,14 +3,14 @@ import Register from './Components/Register';
 import Login from './Components/Login';
 import Profile from './Components/Profile';
 import Cards from './Components/Cards';
-import {useState} from 'react';
 import Dashboard from './Components/Dashboard'
-import {Route, Switch, Redirect, Link} from 'react-router-dom';
+import {Route, Switch, Redirect} from 'react-router-dom';
 import {Component} from 'react';
 import axios from 'axios';
 import Logout from './Components/Logout';
 import NewCard from './Components/NewCard';
 import Nav from './Components/Nav';
+import Interests from './Components/Interests'
 
 
 class App extends Component{
@@ -106,6 +106,11 @@ class App extends Component{
           </Route>
           <Route path='/Cards'>
             <Cards/>
+          </Route>
+          <Route path='/Interests'>
+            <Interests
+            currentUser={this.state.currentUser}
+            isLoggedIn={this.state.isLoggedIn}/>
           </Route>
           <Route path='/Dashboard'>
             <Dashboard
