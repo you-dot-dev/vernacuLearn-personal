@@ -27,5 +27,11 @@ module.exports = {
     const getCards = await db.get_all_cards()
     res.status(200).send(getCards)
   },
+  getMyCards: async(req, res) => {
+    const db = req.app.get('db')
+    const getMyCards = await db.get_my_cards([req.params.id])
+    res.status(200).send(getMyCards)
+
+  }
 
 }

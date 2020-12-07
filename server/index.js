@@ -41,13 +41,14 @@ massive({
 
 
 //endpoints
+app.get('/api/cards', cardCtrl.getAllCards)
+app.get('/auth/userInfo', authCtrl.userInfo)
+app.get('/api/cards/:id', cardCtrl.getOneCard)
+app.get('/api/myCards/:id', cardCtrl.getMyCards)
 app.post('/auth/login', authCtrl.login)
 app.post('/auth/register', authCtrl.register)
-app.get('/auth/userInfo', authCtrl.userInfo)
 app.put('/auth/editUser', authCtrl.editUser)
 app.post('/auth/logout', authCtrl.logout)
-app.get('/api/cards', cardCtrl.getAllCards)
-app.get('/api/cards/:id', cardCtrl.getOneCard)
 app.post('/api/cards', cardCtrl.addCard)
 app.put('/api/cards/:id', cardCtrl.editCard)
 app.delete('/api/cards/:id', cardCtrl.deleteCard)
