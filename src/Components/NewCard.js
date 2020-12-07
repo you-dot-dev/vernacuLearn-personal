@@ -17,6 +17,11 @@ const NewCard = (props) => {
     })
   }, [props])
 
+  function handleDelete(e){
+    axios.delete('http://localhost:1234/api/cards/:id')
+    
+  }
+
 
   function handleSubmit(e){
     e.preventDefault();
@@ -46,6 +51,7 @@ const NewCard = (props) => {
             <li>Part Of Speech: {card.part_of_speech}</li>
             <li>Difficulty: {card.difficulty}</li>
             <li>Category: {card.category}</li>
+            <li><button onClick={handleDelete}>delete card</button></li>
           </ul>
         </div>
       </Fragment>

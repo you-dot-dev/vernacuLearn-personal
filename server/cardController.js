@@ -12,13 +12,17 @@ module.exports = {
   },
   deleteCard: async (req, res) => {
     const db = req.app.get('db');
+    const {id} = req.params;
+    try{
+      const deletedCards = await db.delete_card(+id)
+      res.status(200).send(deletedCards)
+    }
+    catch(err) {
+      console.log(err)
+    }
 
   },
   editCard: async(req, res) => {
-    const db = req.app.get('db');
-
-  },
-  getOneCard: async(req, res) => {
     const db = req.app.get('db');
 
   },

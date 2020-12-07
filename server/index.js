@@ -43,7 +43,6 @@ massive({
 //endpoints
 app.get('/api/cards', cardCtrl.getAllCards)
 app.get('/auth/userInfo', authCtrl.userInfo)
-app.get('/api/cards/:id', cardCtrl.getOneCard)
 app.get('/api/myCards/:id', cardCtrl.getMyCards)
 app.post('/auth/login', authCtrl.login)
 app.post('/auth/register', authCtrl.register)
