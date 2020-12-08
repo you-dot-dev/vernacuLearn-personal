@@ -37,7 +37,7 @@ const NewCard = (props) => {
 
   function handleSubmit(e){
     e.preventDefault();
-    axios.post('http://localhost:1234/api/cards', {word_or_phrase: wordOrPhrase, definition, category, parts_of_speech:partOfSpeech, difficulty, owner_id: props.currentUser.id})
+    axios.post('http://localhost:1234/api/cards', {word_or_phrase: wordOrPhrase, definition, category, part_of_speech:partOfSpeech, difficulty, owner_id: props.currentUser.id})
     .then((res) => {
       updateCards()
     }) 

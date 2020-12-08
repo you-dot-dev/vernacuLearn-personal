@@ -24,6 +24,15 @@ module.exports = {
   },
   editCard: async(req, res) => {
     const db = req.app.get('db');
+    const {id} = req.params;
+    const {difficulty} = req.body;
+    try{
+      const newDiff = await db.edit_card(+id, difficulty)
+      res.status(200).send(newDiff)
+    }
+    catch(err){
+        console.log(err)
+    }
 
   },
   getAllCards: async(req, res) => {
