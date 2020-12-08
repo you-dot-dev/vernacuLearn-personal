@@ -54,7 +54,7 @@ app.put('/api/cards/:id', cardCtrl.editCard)
 app.delete('/api/cards/:id', cardCtrl.deleteCard)
 
 
-app.get('/api/signs3', require("./signedS3Controller"));
+app.get('/api/sign-s3', require("./signedS3Controller"));
 
 
 app.listen(SERVER_PORT, console.log(`listening on port ${SERVER_PORT}`))

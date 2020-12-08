@@ -38,6 +38,6 @@ module.exports = (req, res) => {
       url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`,
     };
 
-    return res.send(returnData);
+    return res.status(200).send(returnData);
   });
 }

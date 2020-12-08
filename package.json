@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "main": "server",
+  "proxy":"http://localhost:1234",
   "nodemonConfig": {
     "ignore": "src/*"
   },
@@ -20,7 +21,7 @@
     "massive": "^6.6.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-dropzone": "^11.2.4",
+    "react-dropzone": "^4.3.0",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",

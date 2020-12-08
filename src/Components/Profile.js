@@ -23,7 +23,7 @@ const Profile = (props) => {
  
     const fileName = `${randomString()}-${file.name.replace(/\s/g, '-')}`
  
-    axios.get('/sign-s3', {
+    axios.get('/api/sign-s3', {
       params: {
         'file-name': fileName,
         'file-type': file.type
@@ -51,18 +51,8 @@ const Profile = (props) => {
       // THEN DO SOMETHING WITH THE URL. SEND TO DB USING POST REQUEST OR SOMETHING
     })
     .catch(err => {
-      this.setState({
-        isUploading: false,
-      });
-      if (err.response.status === 403) {
-        alert(
-          `Your request for a signed URL failed with a status 403. Double check the CORS configuration and bucket policy in the README. You also will want to double check your AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in your .env and ensure that they are the same as the ones that you created in the IAM dashboard. You may need to generate new keys\n${
-            err.stack
-          }`
-        );
-      } else {
-        alert(`ERROR: ${err.status}\n ${err.stack}`);
-      }
+      setIsUploading(false);
+      console.log(err)
     });
   };
     
@@ -73,23 +63,28 @@ const Profile = (props) => {
       <h3>{props.currentUser.email}</h3>
       <label for="avatar">Choose a profile picture:</label>
       <Dropzone
-        onDropAccepted={getSignedRequest}
-        accept="image/*"
-        multiple={false}
+    onDropAccepted={getSignedRequest}
+    accept="image/*"
+    multiple={false}>
+    {({getRootProps, getInputProps}) => (
+    <div 
         style = {{
-          position: 'relative',
-          width: 160,
-          height: 80,
-          borderWidth: 5,
-          marginTop: 25,
-          borderColor: 'gray',
-          borderStyle: 'dashed',
-          borderRadius: 5,
-          display: 'inline-block',
-          fontSize: 28}}
-        >
+        position: 'relative',
+        width: 160,
+        height: 80,
+        borderWidth: 5,
+        marginTop: 25,
+        borderColor: 'gray',
+        borderStyle: 'dashed',
+        borderRadius: 5,
+        display: 'inline-block',
+        fontSize: 17,}}
+        {...getRootProps}>
+        <input {...getInputProps} />
         {isUploading ? <GridLoader /> : <p>Drop files here, or click to select files</p>}
-      </Dropzone>
+    </div>
+    )}
+</Dropzone>
       </div>
       <h3>Interests: </h3>
       <li>one</li>
