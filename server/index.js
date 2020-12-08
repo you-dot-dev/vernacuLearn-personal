@@ -1,12 +1,13 @@
 require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
-const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
+const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET, S3_BUCKET, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY} = process.env;
 const session = require('express-session');
 const cardCtrl = require('./cardController');
 // import interestCtrl from './interestController';
 const authCtrl = require('./authController');
 const cors = require('cors');
+
 
 const app = express();
 
@@ -51,6 +52,9 @@ app.post('/auth/logout', authCtrl.logout)
 app.post('/api/cards', cardCtrl.addCard)
 app.put('/api/cards/:id', cardCtrl.editCard)
 app.delete('/api/cards/:id', cardCtrl.deleteCard)
+
+
+app.get('/api/signs3', require("./signedS3Controller"));
 
 
 app.listen(SERVER_PORT, console.log(`listening on port ${SERVER_PORT}`))
