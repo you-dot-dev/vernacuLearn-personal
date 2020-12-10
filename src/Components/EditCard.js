@@ -1,59 +1,74 @@
 import axios from 'axios';
-import { withRouter } from 'react-router-dom';
 import { useState , useEffect, Fragment} from 'react';
+import { Redirect, useParams } from 'react-router-dom';
 
-const NewCard = (props) => {
+const EditCard = (props) => {
+  console.log("editCard props:", props);
+  const { cardId } = useParams();
+  console.log("editCard cardId:", cardId);
   const [wordOrPhrase, setWordOrPhrase] = useState('')
   const [definition, setDefinition] = useState('')
   const [difficulty, setDifficulty] = useState('easy')
   const [partOfSpeech, setPartOfSpeech] = useState('');
   const [category, setCategory] = useState('');
-  const [userCards, setUserCards] = useState([]);
-
-  function updateCards() {
-    axios.get(`${process.env.REACT_APP_API_URL}/api/myCards/${props.currentUser.id}`)
-    .then(res => {
-      console.log('res data from new card', res.data)
-      setUserCards(res.data)
-    })
-  }
+  const [formSubmitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    updateCards()
-  }, [props])
+    
+    axios.get(`${process.env.REACT_APP_API_URL}/api/myCards/${props.currentUser.id}/${cardId}`)
+      .then( (res) => {
+        console.log("EditCard useEffect res.data", res.data);
+        const [myCard] = res.data;
+        console.log("myCard:", myCard)
+        setWordOrPhrase(myCard.word_or_phrase);
+        setDefinition(myCard.definition);
+        setDifficulty(myCard.difficulty);
+        setPartOfSpeech(myCard.part_of_speech);
+        setCategory(myCard.category);
+      })
+      .catch( (err) => {console.log("EditCard useEffect err:", err)});
 
-  
+    return () => {
+      /* cleanup function */
+      console.log("component unmounting")
+    };
+  }, [cardId, props]);
 
-  function handleDelete(cardId){
-    console.log("cardId?:", cardId);
+  function handleDelete(){
+
     axios.delete(`${process.env.REACT_APP_API_URL}/api/cards/${cardId}`)
     .then( (res) => {
       console.log("handleDelete res:", res);
-      updateCards()
+      /*updateCards()*/
     })
     .catch( (err) => {console.log("handleDelete err:", err)})
 
   }
 
+
+
   function handleSubmit(e){
     e.preventDefault();
-    axios.post(`${process.env.REACT_APP_API_URL}/api/cards`, {word_or_phrase: wordOrPhrase, definition, category, part_of_speech:partOfSpeech, difficulty, owner_id: props.currentUser.id})
+    axios.put(`${process.env.REACT_APP_API_URL}/api/myCards/${props.currentUser.id}/${cardId}`, {word_or_phrase: wordOrPhrase, definition, category, part_of_speech:partOfSpeech, difficulty, owner_id: props.currentUser.id})
     .then((res) => {
-      updateCards()
+      console.log("handle submit res:", res);
+      setSubmitted(true);
+      /* updateCards() */
+
     }) 
     .catch((err) => {
       console.log('err', err)
     })
   }
 
-  const userCardList = userCards.map((card) => {
+  /*const userCardList = userCards.map((card) => {
     return (
       <Fragment>
         <div className="grocery-list-container">
           <div className="red-line"></div>
           <div className="input-container">
             <h4>{card.word_or_phrase}</h4>
-            <button className="pencil-btn" onClick={(e) => {props.history.push(`/EditCard/${card.id}`)}}>Pencil</button>
+            <button className="pencil-btn">Pencil</button>
           </div>
           <ul className="grocery-list">
             <li>Definition: {card.definition}</li>
@@ -66,34 +81,36 @@ const NewCard = (props) => {
       </Fragment>
     )
   })
+  */
 
   return(
     <>
+    { formSubmitted ? <Redirect to="/NewCard" /> : null }
     <div className="grocery-list-container">
         <div className="red-line"></div>
         <div className="input-container">
           <h1>word or phrase:</h1>
           <input type="text"
-          name="wordOrPhrase"
+          name="wordOrPhrase" value={wordOrPhrase}
           onChange={(e) => {setWordOrPhrase(e.target.value)}} />
         </div>
         <ul id='grocery-list'>
          <li>definition:</li>
-         <li><input type="text"
+         <li><input type="text" value={definition}
           onChange={(e) => {setDefinition(e.target.value)}}/>
          </li>
           <li>part of speech:</li>
-         <li><input type="text"
+         <li><input type="text" value={partOfSpeech}
           onChange={(e) => {setPartOfSpeech(e.target.value)}}/></li>
          <li>difficulty:</li>
-          <li><select name="" id=""
+          <li><select name="" id="" value={difficulty}
            onChange={(e) => {setDifficulty(e.target.value)}}>
-            <option selected value="easy">Easy</option>
+            <option value="easy">Easy</option>
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
           </select></li>
           <li>category:</li>
-         <li><input type="text"
+         <li><input type="text" value={category}
           onChange={(e) => {setCategory(e.target.value)}}/></li>
          
 
@@ -103,10 +120,10 @@ const NewCard = (props) => {
           console.log("onClick has e:", e);
           e.preventDefault();
           handleSubmit(e);
-          }}>add new card</button>
-          {userCardList}
+          }}>Submit Changes</button>
+          
         </>
   )}
 
 
-export default withRouter(NewCard);
+export default EditCard;

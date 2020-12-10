@@ -13,7 +13,7 @@ const Cards = (props) => {
 
   useEffect(() => {
 
-    axios.get("http://localhost:1234/api/cards")
+    axios.get(`${process.env.REACT_APP_API_URL}/api/cards`)
       .then( (res) => {
        
         props.dispatch({

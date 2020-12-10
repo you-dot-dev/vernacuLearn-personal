@@ -24,59 +24,57 @@ h1{
   padding: 20px;
 }
 
-.form-wrap{
+.form-wrap {
   background:#fff;
   padding:15px;
   color:#333;
+
+  .form-group {
+    margin:15px;
+    label {
+      display: inline;
+      color: #666;
+    }
+    input{
+      width:100%;
+      padding:10px;
+      border:#ddd 1px solid;
+      border-radius:5px;
+    }
+    button {
+      display:block;
+      width:100%;
+      padding:10px;
+      color:#fff;
+      margin-top:20px;	
+      background:#b9bbff;
+      cursor: pointer;
+      border:white 1px solid;
+      border-radius:5px;
+      :hover{
+        background:#ffdab9;
+      }
+      .bottom-text{
+        font-size:12px;
+        margin-top:20px;
+      
+      }
+    }
+  }
+
+  h1, p {
+    text-align: center;
+  }
 }
 
 
-.form-wrap h1,
-.form-wrap p {
-  text-align: center;
-}
-
-.form-wrap .form-group{
-  margin:15px;
-}
-
-.form-wrap .form-group label {
-  display: inline;
-  color: #666;
-}
-
-.form-wrap .form-group input {
-	width:100%;
-	padding:10px;
-	border:#ddd 1px solid;
-	border-radius:5px;
-}
-
-.form-wrap button {
-	display:block;
-	width:100%;
-	padding:10px;
-	color:#fff;
-	margin-top:20px;	
-	background:#b9bbff;
-	cursor: pointer;
-	border:white 1px solid;
-	border-radius:5px;
-}
-.form-wrap button:hover {
-	background:#ffdab9;
-}
-.form-wrap .bottom-text {
-	font-size:12px;
-	margin-top:20px;
-
-}
 footer {
 	text-align:center;
   margin-top: 10px;
-}
-footer a {
-	color:#b9bbff;
+  a {
+    color:#b9bbff;
+
+  }
 }
 .login-btn{
   font-weight:bold;
@@ -89,6 +87,14 @@ footer a {
 
 
 /* this is for the cards */
+  .grocery-list{
+    list-style:none;
+    padding:0;
+    margin:0;
+    h3 {
+      color:#333
+    }
+  }
 
 #grocery-list-title, #grocery-status{
   text-align:center
@@ -110,19 +116,15 @@ footer a {
   left:80px;
 }
 
-.grocery-list{
-  list-style:none;
-  padding:0;
-  margin:0;
-}
 li{
   padding: 3px 3px 3px 95px;
   border-top: 1px solid rgba(89,89,211,0.459);
   color:#333;
+  :last-child{
+    margin-bottom:0;
+  }
 }
-li:last-child{
-  margin-bottom: 0;
-}
+
 
 .pencil-btn{
   position: absolute;
@@ -148,10 +150,10 @@ nav.nav {
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the*/
-}
-nav.nav.nav-open {
-  width: 25%;
-  transition: 0.5s;
+  .nav-open{
+    width: 25%;
+    transition: 0.5s;
+  }
 }
 .nav-component{
   z-index: 10;
@@ -159,6 +161,3 @@ nav.nav.nav-open {
 
 /* new card css */
 
-#grocery-list > h3{
-  color:#333;
-}

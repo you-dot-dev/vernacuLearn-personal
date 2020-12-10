@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "main": "server",
-  "proxy":"http://localhost:1234",
+  "proxy": "http://localhost:1234",
   "nodemonConfig": {
     "ignore": "src/*"
   },
@@ -19,6 +19,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "massive": "^6.6.1",
+    "node-sass": "^4.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-dropzone": "^4.3.0",

@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 const Logout = (props) => {
 
   useEffect(() => {
-    axios.post('http://localhost:1234/auth/logout')
+    axios.post(`${process.env.REACT_APP_API_URL}/auth/logout`)
     .then(res => {
       props.setCurrentUser({
         firstname: '',

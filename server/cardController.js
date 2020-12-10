@@ -42,9 +42,34 @@ module.exports = {
   },
   getMyCards: async(req, res) => {
     const db = req.app.get('db')
-    const getMyCards = await db.get_my_cards([req.params.id])
+    console.log("req.params.ownerId:", req.params.ownerId);
+    const getMyCards = await db.get_my_cards([req.params.ownerId])
     res.status(200).send(getMyCards)
 
+  },
+  getMyCard: async(req, res) => {
+    const db = req.app.get('db');
+    console.log("req.params.ownerId:", req.params.ownerId);
+    console.log("req.params.cardId:", req.params.cardId);
+    const myCard = await db.get_my_card([req.params.ownerId, req.params.cardId])
+    res.status(200).send(myCard)
+  },
+  updateMyCard: async(req, res) => {
+    const db = req.app.get('db');
+    console.log("req.params.ownerId:", req.params.ownerId);
+    console.log("req.params.cardId:", req.params.cardId);
+    console.log("req.body", req.body)
+    const myUpdatedCard = await db.update_my_card([
+      req.params.ownerId,
+      req.params.cardId,
+      req.body.word_or_phrase,
+      req.body.definition,
+      req.body.category,
+      req.body.part_of_speech,
+      req.body.difficulty,
+      req.body.owner_id
+    ])
+    res.status(200).send(myUpdatedCard)
   }
 
 }

@@ -12,7 +12,7 @@ const Register = (props) => {
  function handleSubmit(e){
    e.preventDefault();
    console.log("wtf???")
-   axios.post('http://localhost:1234/auth/register', {
+   axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, {
      firstName,
      lastName,
      email,
@@ -32,6 +32,7 @@ const Register = (props) => {
      <div className="form-wrap">
      
       <h1>welcome to vernacuLearn</h1>
+      <h4>api hosted at: {process.env.REACT_APP_API_URL}</h4>
       <p>it's free and only takes a minute</p>
     <div className="form-group">
       <label htmlFor="text">enter first name</label>

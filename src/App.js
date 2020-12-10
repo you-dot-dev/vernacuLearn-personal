@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Register from './Components/Register';
 import Login from './Components/Login';
 import Profile from './Components/Profile';
@@ -9,6 +9,7 @@ import {Component} from 'react';
 import axios from 'axios';
 import Logout from './Components/Logout';
 import NewCard from './Components/NewCard';
+import EditCard from './Components/EditCard';
 import Nav from './Components/Nav';
 import Interests from './Components/Interests'
 
@@ -34,7 +35,7 @@ class App extends Component{
   }
 
   componentDidMount(){
-    axios.get("http://localhost:1234/auth/userInfo")
+    axios.get(`${process.env.REACT_APP_API_URL}/auth/userInfo`)
     .then(res => {
       
       if(!res.data.firstname) {
@@ -124,6 +125,11 @@ class App extends Component{
           </Route>
           <Route path="/NewCard">
             <NewCard
+            currentUser={this.state.currentUser}
+            isLoggedIn={this.state.isLoggedIn}/>
+          </Route>
+          <Route path="/EditCard/:cardId">
+            <EditCard
             currentUser={this.state.currentUser}
             isLoggedIn={this.state.isLoggedIn}/>
           </Route>

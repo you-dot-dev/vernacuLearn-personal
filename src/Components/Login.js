@@ -9,7 +9,7 @@ const Login = (props) => {
 
   function onSubmit(e){
     e.preventDefault()
-      axios.post('http://localhost:1234/auth/login', {
+      axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, {
         email,
         password
       })
