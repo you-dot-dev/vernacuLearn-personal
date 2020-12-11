@@ -41,21 +41,25 @@ massive({
 }).catch(err => console.log('database error' + err));
 
 
-//endpoints
+// Card API
 app.get('/api/cards', cardCtrl.getAllCards)
-app.get('/auth/userInfo', authCtrl.userInfo)
-app.get('/api/myCards/:ownerId', cardCtrl.getMyCards)
-app.get('/api/myCards/:ownerId/:cardId', cardCtrl.getMyCard)
-app.put('/api/myCards/:ownerId/:cardId', cardCtrl.updateMyCard)
-app.post('/auth/login', authCtrl.login)
-app.post('/auth/register', authCtrl.register)
-app.put('/auth/editUser', authCtrl.editUser)
-app.post('/auth/logout', authCtrl.logout)
 app.post('/api/cards', cardCtrl.addCard)
 app.put('/api/cards/:id', cardCtrl.editCard)
 app.delete('/api/cards/:id', cardCtrl.deleteCard)
+app.get('/api/myCards/:ownerId', cardCtrl.getMyCards)
+app.get('/api/myCards/:ownerId/:cardId', cardCtrl.getMyCard)
+app.put('/api/myCards/:ownerId/:cardId', cardCtrl.updateMyCard)
 
 
+// User Management
+app.get('/auth/userInfo', authCtrl.userInfo)
+app.post('/auth/login', authCtrl.login)
+app.post('/auth/register', authCtrl.register)
+app.put('/auth/updateProfile', authCtrl.updateProfile)
+app.post('/auth/logout', authCtrl.logout)
+
+
+// Amazon 
 app.get('/api/sign-s3', require("./signedS3Controller"));
 
 

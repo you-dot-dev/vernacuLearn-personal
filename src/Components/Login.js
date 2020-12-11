@@ -46,6 +46,7 @@ const Login = (props) => {
       onChange={(e) => setPassword(e.target.value)}
       /></div>
       <button
+      className="reg-log"
         type="submit"
         onClick={(e) => onSubmit(e)}
         

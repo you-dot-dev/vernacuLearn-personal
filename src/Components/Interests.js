@@ -3,12 +3,12 @@ const Interests = () => {
   return(
     <div className="container">
       <div className="form-wrap">
-        <h1>hello from interests</h1>
+        <h1>welcome to our interests page</h1>
 
+            <h3 style={{padding:"5px"}}>here is a list of our provided interests (so far!!)</h3>
         <div className="grocery-list-container">
           <div className="red-line"></div>
           <div className="input-container">
-            <h4>here are a list of our provided interests:</h4>
           </div>
           <ul className="grocery-list">
             <li>Software Engineering</li>
@@ -24,7 +24,7 @@ const Interests = () => {
             <li>Political Science</li>
             <li>Spirituality</li>
             <li>Psychology</li> 
-            <li>Words you should know</li>
+            <li>Words You Should Know (to sound smart)</li>
         </ul>
       </div>
     </div>

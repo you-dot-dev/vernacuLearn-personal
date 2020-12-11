@@ -37,7 +37,7 @@ class App extends Component{
   componentDidMount(){
     axios.get(`${process.env.REACT_APP_API_URL}/auth/userInfo`)
     .then(res => {
-      
+      console.log("userInfo res:", res.data);
       if(!res.data.firstname) {
         console.log('dont have first name');
       } else {
@@ -103,7 +103,8 @@ class App extends Component{
           <Route path='/Profile'>
             <Profile
             currentUser={this.state.currentUser}
-            isLoggedIn={this.state.isLoggedIn}/>
+            isLoggedIn={this.state.isLoggedIn}
+            setCurrentUser={this.setCurrentUser}/>
           </Route>
           <Route path='/Cards'>
             <Cards/>

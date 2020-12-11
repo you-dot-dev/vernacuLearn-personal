@@ -88,7 +88,7 @@ const NewCard = (props) => {
          <li>difficulty:</li>
           <li><select name="" id=""
            onChange={(e) => {setDifficulty(e.target.value)}}>
-            <option selected value="easy">Easy</option>
+            <option defaultValue value="easy">Easy</option>
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
           </select></li>
@@ -99,12 +99,16 @@ const NewCard = (props) => {
 
         </ul>
       </div>
-        <button onClick={(e)=>{
+      <div>
+        <button 
+          className="add-card"
+          onClick={(e)=>{
           console.log("onClick has e:", e);
           e.preventDefault();
           handleSubmit(e);
           }}>add new card</button>
           {userCardList}
+          </div>
         </>
   )}
 

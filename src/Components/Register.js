@@ -32,7 +32,6 @@ const Register = (props) => {
      <div className="form-wrap">
      
       <h1>welcome to vernacuLearn</h1>
-      <h4>api hosted at: {process.env.REACT_APP_API_URL}</h4>
       <p>it's free and only takes a minute</p>
     <div className="form-group">
       <label htmlFor="text">enter first name</label>
@@ -65,6 +64,7 @@ const Register = (props) => {
       
 
       <button
+      className="reg-log"
       type="submit"
        onClick={(e) => {handleSubmit(e)}}>sign up </button>
 

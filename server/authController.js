@@ -57,13 +57,15 @@ module.exports = {
     }
   },
 
-  editUser: async (req, res) => {
+  updateProfile: async (req, res) => {
     const db = req.app.get('db')
-    const {img} = req.body
-    const {user_id} = req.session.user
+    const {profile_url} = req.body;
+    console.log("updateProfile req.body:", req.body);
+    const {id} = req.session.user;
 
-    const updatedUser = await db.edit_user([user_id, username, img])
+    const updatedUser = await db.update_profile([profile_url, id])
     req.session.user = updatedUser[0]
+    console.log("updated profile pic. new session.user:", req.session.user);
     res.status(200).send(req.session.user)
   },
 

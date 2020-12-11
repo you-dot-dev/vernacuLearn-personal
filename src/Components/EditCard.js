@@ -116,7 +116,9 @@ const EditCard = (props) => {
 
         </ul>
       </div>
-        <button onClick={(e)=>{
+        <button 
+          className="add-card"
+          onClick={(e)=>{
           console.log("onClick has e:", e);
           e.preventDefault();
           handleSubmit(e);

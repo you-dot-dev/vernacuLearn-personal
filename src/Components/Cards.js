@@ -48,7 +48,7 @@ const Cards = (props) => {
         <div className="red-line"></div>
         <div className="input-container">
           <h4>{card.word_or_phrase}</h4>
-          <button className='pencil-btn'>Pencil icon goes here</button>
+          {/* <button className='pencil-btn'>Pencil icon goes here</button> */}
         </div>
         <ul id='grocery-list'>
           <li>Definition: {card.definition}</li>

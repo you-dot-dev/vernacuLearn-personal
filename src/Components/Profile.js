@@ -11,12 +11,13 @@ const Profile = (props) => {
 
   const [isUploading, setIsUploading] = useState(false);
 
+
   useEffect(() => {
     if(!props.isLoggedIn){
       props.history.push('/')
     }
 
-  }, [props.isLoggedIn])
+  }, [props])
   
   const getSignedRequest = ([file]) => {
     setIsUploading(true)
@@ -31,6 +32,7 @@ const Profile = (props) => {
     }).then( (response) => {
       const { signedRequest, url } = response.data 
       uploadFile(file, signedRequest, url)
+      console.log("upload file url:", url);
     }).catch( err => {
       console.log(err)
     })
@@ -48,7 +50,15 @@ const Profile = (props) => {
     .then(response => {
       setIsUploading(false);
       console.log("response", response)
-      // THEN DO SOMETHING WITH THE URL. SEND TO DB USING POST REQUEST OR SOMETHING
+
+      axios.put(`${process.env.REACT_APP_API_URL}/auth/updateProfile`, {
+        profile_url: url
+      })
+      .then( (res)=> {
+        props.setCurrentUser(res.data);
+      })
+      .catch( (err) => {console.log("update profile err:", err)});
+      
     })
     .catch(err => {
       setIsUploading(false);
@@ -61,7 +71,7 @@ const Profile = (props) => {
       <div className="form-wrap">
       <h1>{props.currentUser.firstname} {props.currentUser.lastname}</h1>
       <h3>{props.currentUser.email}</h3>
-      <label for="avatar">Choose a profile picture:</label>
+      {/* <label for="avatar">Choose a profile picture:</label> */}
       <Dropzone
     onDropAccepted={getSignedRequest}
     accept="image/*"
@@ -86,11 +96,6 @@ const Profile = (props) => {
     )}
 </Dropzone>
       </div>
-      <h3>Interests: </h3>
-      <li>one</li>
-      <li>two</li>
-      <li>three</li>
-      <li>four</li>
     </div>
   )
 }

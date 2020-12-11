@@ -41,39 +41,26 @@ h1{
       border:#ddd 1px solid;
       border-radius:5px;
     }
-    button {
-      display:block;
-      width:100%;
-      padding:10px;
-      color:#fff;
-      margin-top:20px;	
-      background:#b9bbff;
-      cursor: pointer;
-      border:white 1px solid;
-      border-radius:5px;
-      :hover{
-        background:#ffdab9;
-      }
-      .bottom-text{
-        font-size:12px;
-        margin-top:20px;
+    .bottom-text{
+      font-size:12px;
+      margin-top:20px;
       
-      }
     }
-  }
-
-  h1, p {
-    text-align: center;
   }
 }
 
+h1, p, h3 {
+  text-align: center;
+}
+
+
 
 footer {
-	text-align:center;
+  text-align:center;
   margin-top: 10px;
   a {
     color:#b9bbff;
-
+    
   }
 }
 .login-btn{
@@ -87,14 +74,14 @@ footer {
 
 
 /* this is for the cards */
-  .grocery-list{
-    list-style:none;
-    padding:0;
-    margin:0;
-    h3 {
-      color:#333
-    }
+.grocery-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+  h3 {
+    color:#333
   }
+}
 
 #grocery-list-title, #grocery-status{
   text-align:center
@@ -130,7 +117,7 @@ li{
   position: absolute;
   left:300px;
   bottom: 40px;
-
+  
 }
 .input-container{
   color:#333;
@@ -150,14 +137,54 @@ nav.nav {
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the*/
-  .nav-open{
-    width: 25%;
-    transition: 0.5s;
-  }
 }
+nav.nav-open{
+      width: 20%;
+      transition: 0.5s;
+    }
 .nav-component{
   z-index: 10;
 }
 
-/* new card css */
 
+button.reg-log {
+  display:block;
+  width:100%;
+  padding:10px;
+  color:#fff;
+  margin-top:20px;	
+  background:#b9bbff;
+  cursor: pointer;
+  border:white 1px solid;
+  border-radius:5px;
+  &:hover{
+    background:#ffdab9;
+  }
+}
+
+.add-card{
+  display:block;
+  width:20%;
+  padding:10px;
+  color:#333;
+  margin:auto;
+  margin-top:20px;	
+  background:#b9bbff;
+  cursor: pointer;
+  border:white 1px solid;
+  border-radius:5px;
+}
+  
+  /* media queries */
+
+@media screen and (max-width: 540px) {
+  nav.nav-open{
+    width:100%
+  }
+  .grocery-list-container{
+    width:300px;
+  }
+  h3{
+    display: none;
+  }
+}
