@@ -53,7 +53,7 @@ const NewCard = (props) => {
           <div className="red-line"></div>
           <div className="input-container">
             <h4>{card.word_or_phrase}</h4>
-            <button className="pencil-btn" onClick={(e) => {props.history.push(`/EditCard/${card.id}`)}}>Pencil</button>
+            <button className="pencil-btn" onClick={(e) => {props.history.push(`/EditCard/${card.id}`)}}>✎</button>
           </div>
           <ul className="grocery-list">
             <li>Definition: {card.definition}</li>
