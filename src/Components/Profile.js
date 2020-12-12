@@ -66,11 +66,22 @@ const Profile = (props) => {
     });
   };
     
+  const profileStyle = {
+    backgroundImage: 'url(' + props.currentUser.profile_url + ')',
+    backgroundSize: 'contain',
+    backgroundPosition: 'center center',
+    backgroundRepeat: 'no-repeat',
+    height: '200px',
+    width: '200px',
+    display: 'inline-block'
+  }
+
   return (
     <div className="container">
       <div className="form-wrap">
       <h1>{props.currentUser.firstname} {props.currentUser.lastname}</h1>
       <h3>{props.currentUser.email}</h3>
+      <span style={profileStyle}></span>
       {/* <label for="avatar">Choose a profile picture:</label> */}
       <Dropzone
     onDropAccepted={getSignedRequest}
@@ -84,8 +95,8 @@ const Profile = (props) => {
         height: 80,
         borderWidth: 5,
         marginTop: 25,
-        borderColor: 'gray',
-        borderStyle: 'dashed',
+        // borderColor: 'gray',
+        // borderStyle: 'dashed',
         borderRadius: 5,
         display: 'inline-block',
         fontSize: 17,}}

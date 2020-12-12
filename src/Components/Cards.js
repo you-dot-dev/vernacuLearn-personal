@@ -42,7 +42,7 @@ const Cards = (props) => {
     })
     .map( (card) => {
     return (
-      <Fragment>
+      <Fragment key={card.id}>
       
       <div className="grocery-list-container" style={{marginTop: "5px"}}>
         <div className="red-line"></div>

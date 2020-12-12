@@ -15,11 +15,6 @@ CREATE TABLE cards(
   category VARCHAR(50) NOT NULL,
 )
 
--- CREATE TABLE interests (
---   id SERIAL PRIMARY KEY,
---   interest VARCHAR(50)
---   card_id REFERENCES cards(id)
--- )
 
 
 CREATE TABLE personal_cards (
@@ -31,3 +26,11 @@ CREATE TABLE personal_cards (
   part_of_speech parts_of_speech,
   owner_id INT REFERENCES users(id)
 );
+
+
+
+/* join to be continued....*/
+
+SELECT personal_cards.*, users.firstname 
+FROM users
+INNER JOIN personal_cards ON personal_cards.owner_id = users.id
