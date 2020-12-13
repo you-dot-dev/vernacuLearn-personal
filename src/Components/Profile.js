@@ -73,35 +73,35 @@ const Profile = (props) => {
     backgroundRepeat: 'no-repeat',
     height: '200px',
     width: '200px',
-    display: 'inline-block'
+    margin: '0 auto'
   }
 
   return (
     <div className="container">
-      <div className="form-wrap">
+      <div className="form-wrap" style={{ textAlign: 'center'}}>
       <h1>{props.currentUser.firstname} {props.currentUser.lastname}</h1>
       <h3>{props.currentUser.email}</h3>
-      <span style={profileStyle}></span>
+      <div style={profileStyle}></div>
       {/* <label for="avatar">Choose a profile picture:</label> */}
       <Dropzone
     onDropAccepted={getSignedRequest}
     accept="image/*"
     multiple={false}>
-    {({getRootProps, getInputProps}) => (
+    {({getRootProps}) => (
     <div 
         style = {{
         position: 'relative',
         width: 160,
         height: 80,
         borderWidth: 5,
-        marginTop: 25,
+        margin: '25px auto 0',
         // borderColor: 'gray',
         // borderStyle: 'dashed',
         borderRadius: 5,
         display: 'inline-block',
         fontSize: 17,}}
         {...getRootProps}>
-        <input {...getInputProps} />
+        {/* <input {...getInputProps} /> */}
         {isUploading ? <GridLoader /> : <p>Drop files here, or click to select files</p>}
     </div>
     )}
