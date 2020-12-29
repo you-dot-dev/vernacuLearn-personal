@@ -12,6 +12,7 @@ import NewCard from './Components/NewCard';
 import EditCard from './Components/EditCard';
 import Nav from './Components/Nav';
 import Interests from './Components/Interests'
+import HomePage from './Components/HomePage';
 
 
 class App extends Component{
@@ -87,11 +88,13 @@ class App extends Component{
     
         <Switch> 
           <Route exact path='/' >
-          {this.state.isLoggedIn ? <Redirect to="/Dashboard"/> : <Register 
+          {this.state.isLoggedIn ? <Redirect to="/Dashboard"/> : <HomePage/>}
+           
+          </Route>
+          <Route path='/Register'>
+            <Register
             setLoggedIn={this.setLoggedIn}
             setCurrentUser={this.setCurrentUser}/>
-            }
-           
           </Route>
           <Route path='/Login'>
             <Login
@@ -134,6 +137,7 @@ class App extends Component{
             currentUser={this.state.currentUser}
             isLoggedIn={this.state.isLoggedIn}/>
           </Route>
+          
         </Switch>
         
     
