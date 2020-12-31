@@ -1,8 +1,12 @@
 require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
-const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
+const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET, S3_BUCKET, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY} = process.env;
 const session = require('express-session');
+const cardCtrl = require('./cardController');
+// import interestCtrl from './interestController';
+const authCtrl = require('./authController');
+const cors = require('cors');
 
 
 const app = express();
@@ -11,12 +15,17 @@ const app = express();
 
 //middleware
 app.use(express.json());
+app.use(cors({
+  origin: "http://localhost:3000",
+  methods: ["GET", "POST", "DELETE", "PUT", "HEAD"],
+  credentials: true
+}));
 app.use(session({
   resave:false,
   saveUninitialized: true,
   secret: SESSION_SECRET,
   cookie: {
-    maxAge: 100 * 60 * 60 * 24 * 7,
+    maxAge: 1000 * 60 * 60 * 24 * 7,
   }, 
 })
 );
@@ -32,15 +41,26 @@ massive({
 }).catch(err => console.log('database error' + err));
 
 
-//endpoints
-app.get('/auth/login', ctrl.login)
-app.get('/auth/register', ctrl.register)
-app.get('/api/cards', ctrl.getAllCards)
-app.get('/api/cards/:id', ctrl.getOneCard)
-app.get('/api/cards/:id', ctrl.getOneCard)
-app.post('api/cards/:id', ctrl.addCard)
-app.put('api/cards/:id', ctrl.editCard)
-app.delete('api/cards/:id', ctrl.deleteCard)
+// Card API
+app.get('/api/cards', cardCtrl.getAllCards)
+app.post('/api/cards', cardCtrl.addCard)
+app.put('/api/cards/:id', cardCtrl.editCard)
+app.delete('/api/cards/:id', cardCtrl.deleteCard)
+app.get('/api/myCards/:ownerId', cardCtrl.getMyCards)
+app.get('/api/myCards/:ownerId/:cardId', cardCtrl.getMyCard)
+app.put('/api/myCards/:ownerId/:cardId', cardCtrl.updateMyCard)
+
+
+// User Management
+app.get('/auth/userInfo', authCtrl.userInfo)
+app.post('/auth/login', authCtrl.login)
+app.post('/auth/register', authCtrl.register)
+app.put('/auth/updateProfile', authCtrl.updateProfile)
+app.post('/auth/logout', authCtrl.logout)
+
+
+// Amazon 
+app.get('/api/sign-s3', require("./signedS3Controller"));
 
 
 app.listen(SERVER_PORT, console.log(`listening on port ${SERVER_PORT}`))

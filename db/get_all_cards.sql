@@ -1,0 +1,3 @@
+SELECT * FROM cards
+
+ORDER BY id 
