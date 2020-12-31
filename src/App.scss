@@ -1,17 +1,18 @@
-*{
+* {
   box-sizing: border-box;
   margin:0;
   padding:0;
   text-decoration: none;
   list-style: none;
-  
 }
+
+
 
 /* this is all for the registration page */
 body{
   font-family: 'Raleway', sans-serif;
   background-color: #fff;
-  color: #fff;
+  color: #777;
   line-height: 1.8;
 }
 
@@ -55,6 +56,29 @@ h1, p, h3 {
 }
 
 
+header {
+  img.logo {
+    height: 3rem;
+  } 
+}
+
+main {
+  .hero-container {
+    display: flex;
+    justify-content: center;
+  }
+  section {
+    border: 1px solid  red;
+  }
+  section.hero-image {
+    background-image: url(./img/faceless-people.jpg);
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 800px;
+    height: 300px;
+  }
+}
 
 footer {
   text-align:center;
@@ -179,7 +203,7 @@ button.reg-log {
   overflow: hidden;
 }
   
-  /* media queries */
+/* media queries */
 
 @media screen and (max-width: 540px) {
   nav.nav-open{
