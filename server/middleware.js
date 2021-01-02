@@ -1,5 +1,5 @@
-module.exports = {
-  checkUser: async (req, res, next) => {
-    next()
-  }
-};
+// module.exports = {
+//   checkUser: async (req, res, next) => {
+//     next()
+//   }
+// };

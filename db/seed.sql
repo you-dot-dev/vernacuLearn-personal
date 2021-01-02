@@ -8,16 +8,29 @@ CREATE TABLE users (
 )
 
 CREATE TABLE cards(
-  id NOT NULL SERIAL,
+  id NOT NULL SERIAL PRIMARY KEY,
   word_or_phrase VARCHAR(100) NOT NULL,
   definition VARCHAR(500) NOT NULL,
-  difficulty enum('easy', 'medium', 'hard') NOT NULL,
+  difficulty ENUM('easy', 'medium', 'hard') NOT NULL,
   category VARCHAR(50) NOT NULL,
 )
 
-CREATE TABLE interests (
-  id SERIAL PRIMARY KEY,
-  interest VARCHAR(50)
-  
-)
 
+
+CREATE TABLE personal_cards (
+  id SERIAL PRIMARY KEY,
+  word_or_phrase VARCHAR(100) NOT NULL,
+  definition VARCHAR(1000) NOT NULL,
+  difficulty difficulty_list,
+  category VARCHAR(50) NOT NULL,
+  part_of_speech parts_of_speech,
+  owner_id INT REFERENCES users(id)
+);
+
+
+
+/* join to be continued....*/
+
+SELECT personal_cards.*, users.firstname 
+FROM users
+INNER JOIN personal_cards ON personal_cards.owner_id = users.id

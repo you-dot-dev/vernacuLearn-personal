@@ -1,0 +1,218 @@
+* {
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+  text-decoration: none;
+  list-style: none;
+}
+
+
+
+/* this is all for the registration page */
+body{
+  font-family: 'Raleway', sans-serif;
+  background-color: #fff;
+  color: #777;
+  line-height: 1.8;
+}
+
+h1{
+  font-size:2em;
+}
+
+.container {
+  margin:30px auto;
+  max-width: 960px;
+  padding: 20px;
+}
+
+.form-wrap {
+  background:#fff;
+  padding:15px;
+  color:#333;
+
+  .form-group {
+    margin:15px;
+    label {
+      display: inline;
+      color: #666;
+    }
+    input{
+      width:100%;
+      padding:10px;
+      border:#ddd 1px solid;
+      border-radius:5px;
+    }
+    .bottom-text{
+      font-size:12px;
+      margin-top:20px;
+      
+    }
+  }
+}
+
+h1, p, h3 {
+  text-align: center;
+}
+
+
+header {
+  img.logo {
+    height: 3rem;
+  } 
+}
+
+main {
+  .hero-container {
+    display: flex;
+    justify-content: center;
+  }
+  section {
+    border: 1px solid  red;
+  }
+  section.hero-image {
+    background-image: url(./img/faceless-people.jpg);
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 800px;
+    height: 300px;
+  }
+}
+
+footer {
+  text-align:center;
+  margin-top: 10px;
+  a {
+    color:#b9bbff;
+    
+  }
+}
+.login-btn{
+  font-weight:bold;
+}
+
+/* this is for the dashboard  */
+.welcome {
+  text-align: center;
+}
+
+
+/* this is for the cards */
+.grocery-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+  h3 {
+    color:#333
+  }
+}
+
+#grocery-list-title, #grocery-status{
+  text-align:center
+}
+
+.grocery-list-container{
+  width: 440px;
+  margin: 0 auto;
+  border: 1px solid #333;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 2px 3px 0px #eee;
+  background: #fff;
+}
+.red-line {
+  height:100%;
+  border: 1px solid rgba(255, 0, 0, 0.788);
+  position: absolute;
+  left:80px;
+}
+
+li{
+  padding: 3px 3px 3px 95px;
+  border-top: 1px solid rgba(89,89,211,0.459);
+  color:#333;
+  :last-child{
+    margin-bottom:0;
+  }
+}
+
+
+.pencil-btn{
+  position: absolute;
+  left:300px;
+  bottom: 40px;
+  
+}
+.input-container{
+  color:#333;
+  text-align: center;
+}
+
+
+/* this is for the navigation */
+nav.nav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #fff; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the*/
+  
+}
+nav.nav-open{
+      width: 20%;
+      transition: 0.5s;
+    }
+.nav-component{
+  z-index: 10;
+}
+
+
+button.reg-log {
+  display:block;
+  width:100%;
+  padding:10px;
+  color:#fff;
+  margin-top:20px;	
+  background:#b9bbff;
+  cursor: pointer;
+  border:white 1px solid;
+  border-radius:5px;
+  &:hover{
+    background:#ffdab9;
+  }
+}
+
+.add-card{
+  display:block;
+  width:20%;
+  padding:10px;
+  color:#333;
+  margin:auto;
+  margin-top:20px;	
+  background:#b9bbff;
+  cursor: pointer;
+  border:white 1px solid;
+  border-radius:5px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+  
+/* media queries */
+
+@media screen and (max-width: 540px) {
+  nav.nav-open{
+    width:100%
+  }
+  .grocery-list-container{
+    width:300px;
+  }
+  h3{
+    display: none;
+  }
+}
